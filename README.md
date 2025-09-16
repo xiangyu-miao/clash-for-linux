@@ -113,12 +113,27 @@ You should prepare your own `config.yaml` file based on your proxy provider's de
 To start Clash with your configuration file, run the following command in the terminal:
 
 ```bash
-./clash -d ./configs &> ./logs/clash.log &      
+./clash -d ./configs &> ./logs/clash.log      
 ```
 
-This command runs Clash in the background, using the configuration file located in the `configs` directory and logging output to `logs/clash.log`.
+This command runs Clash **in the foreground** (add `&` in the end to run it in the background), using the configuration file located in the `configs` directory and logging output to `logs/clash.log`.
 
-If you want to stop Clash (for example, when you want to update the configuration or when you no longer need the proxy), you can find its process ID:
+If you want Clash to run even after you close the terminal, you can use `nohup`:
+
+```bash
+nohup ./clash -d ./configs &> ./logs/clash.log &
+```
+
+You can also create a `tmux` or `screen` session to run Clash in the background and keep it running after you disconnect from the terminal.
+
+```bash
+tmux new -s clash
+./clash -d ./configs &> ./logs/clash.log &
+```
+
+If you want to stop Clash (for example, when you want to update the configuration or when you no longer need the proxy), you can use `ctrl + C` to stop it.
+
+Alternatively, you can run the following command to find its process ID:
 
 ```bash
 ps -ef | grep -v grep | grep clash
