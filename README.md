@@ -72,7 +72,7 @@ Then you can easily toggle the proxy on and off using `proxy_on` and `proxy_off`
 
 ```bash
 proxy_on  # Enable proxy
-env | grep -i proxy  # Verify proxy settings
+ps -ef | grep -v grep | grep clash  # Verify proxy settings
 proxy_off  # Disable proxy
 ```
 
