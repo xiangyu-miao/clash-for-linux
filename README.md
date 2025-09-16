@@ -72,7 +72,7 @@ Then you can easily toggle the proxy on and off using `proxy_on` and `proxy_off`
 
 ```bash
 proxy_on  # Enable proxy
-ps -ef | grep -v grep | grep clash  # Verify proxy settings
+env | grep -i proxy  # Verify proxy settings
 proxy_off  # Disable proxy
 ```
 
@@ -121,7 +121,7 @@ This command runs Clash in the background, using the configuration file located 
 If you want to stop Clash (for example, when you want to update the configuration or when you no longer need the proxy), you can find its process ID:
 
 ```bash
-ps -ef | grep clash
+ps -ef | grep -v grep | grep clash
 ```
 
 Then kill the process using its PID:
